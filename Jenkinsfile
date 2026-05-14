@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         APP_NAME = 'ithcapp'
-        DEPLOY_DIR = '/opt/ithcapp'
-        VENV_PATH = "${DEPLOY_DIR}/venv"
+        DEPLOY_DIR = '.'
+        VENV_PATH = "venv"
     }
     
     stages {
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh '''
                     # Create Python virtual environment
-                    python3 -m venv ${VENV_PATH}
+                    python3 -m venv venv
                     . ${VENV_PATH}/bin/activate
                     
                     # Install backend dependencies
