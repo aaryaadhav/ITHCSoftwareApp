@@ -67,7 +67,7 @@ pipeline {
                     }
                     post {
                         always {
-                            junit 'frontend/junit.xml'
+                            junit allowEmptyResults: true, testResults: 'frontend/junit.xml'
                             publishHTML([
                                 allowMissing: true,
                                 alwaysLinkToLastBuild: true,
