@@ -7,13 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                echo "Cloning repository..."
-                git 'https://github.com/aaryaadhav/ITHCSoftwareApp.git'
-            }
-        }
-
         stage('Setup Backend') {
             steps {
                 sh '''
