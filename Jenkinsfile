@@ -62,7 +62,7 @@ pipeline {
                     steps {
                         sh '''
                             cd frontend
-                            npm test -- --coverage --ci --reporters=default --reporters=jest-junit || true
+                            npm test -- --coverage --ci || true
                         '''
                     }
                     post {
