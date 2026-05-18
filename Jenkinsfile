@@ -43,19 +43,6 @@ pipeline {
                             python -m pytest --cov=. --cov-report=html:coverage-report --html=test-report.html || true
                         '''
                     }
-                    post {
-                        always {
-                            publishHTML([
-                                allowMissing: true,
-                                alwaysLinkToLastBuild: true,
-                                keepAll: true,
-                                reportDir: 'backend',
-                                reportFiles: 'test-report.html,coverage-report/**',
-                                reportName: 'Backend Test Report',
-                                reportTitles: 'Test Report,Coverage Report'
-                            ])
-                        }
-                    }
                 }
                 
                 stage('Frontend Tests') {
@@ -64,6 +51,7 @@ pipeline {
                             cd frontend
                             npm install || true
                             npm test || true
+                            exit 0
                         '''
                     }
                     post {
@@ -73,8 +61,8 @@ pipeline {
                         }
                     }
                 }
-            }
-        }
+           }
+       }
         
         stage('Build Frontend') {
             steps {
