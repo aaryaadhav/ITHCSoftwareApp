@@ -27,7 +27,7 @@ pipeline {
                         echo "Running backend tests..."
                         . $VENV_PATH/bin/activate
                         cd backend
-                        pytest || true
+                        pytest --junitxml=results.xml || true
                         '''
                     }
                 }
@@ -76,6 +76,7 @@ pipeline {
         }
         success {
             echo "✅ SUCCESS: Application build + test completed."
+            junit allowEmptyResults: true, testResults: 'backend/results.xml'
         }
         failure {
             echo "❌ FAILURE: Some steps failed but pipeline handled safely."
